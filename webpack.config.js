@@ -31,15 +31,22 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          'style-loader',
+          'css-loader',
           {
-            loader: 'css-loader',
+            loader: 'postcss-loader',
             options: {
-              importLoaders: 1
+              postcssOptions: {
+                plugins: [
+                  [
+                    'postcss-preset-env',
+                    {
+                      // Options
+                    }
+                  ]
+                ]
+              }
             }
-          },
-          {
-            loader: 'postcss-loader'
           }
         ]
       }
